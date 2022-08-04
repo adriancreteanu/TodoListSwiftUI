@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ListView: View {
-    @State var items: [String] = [
-        "First item",
-        "Second item",
-        "Third"
+    @State var items: [ItemModel] = [
+        ItemModel(title: "First item", isCompleted: false),
+        ItemModel(title: "Second item", isCompleted: true),
+        ItemModel(title: "Third", isCompleted: false)
     ]
 
     var body: some View {
         List {
-            ForEach(items, id: \.self) { item in
-                ListRowView(title: item)
+            ForEach(items) { item in
+                ListRowView(item: item)
             }
         }
         .listStyle(.plain)
